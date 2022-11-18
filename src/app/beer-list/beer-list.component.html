@@ -1,3 +1,4 @@
+<h1>Lista de cervezas</h1>
 <table class="table">
     <thead>
         <tr>
@@ -9,24 +10,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let beer of beers" [ngClass]="{'clearance': beer.clearance}">
             <td><img [src]="beer.image" [alt]="beer.name"></td>
             <td>{{beer.name}}</td>
             <td>{{beer.type}}</td>
-            <td>{{beer.price}}</td>
-            <td>{{beer.stock}}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Ipa</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Cream stout</td>
-            <td></td>
-            <td></td>
+            <td>{{beer.price  | currency}}</td>
+            <td ><span class="badge text-bg-warning" *ngIf="beer.stock==0">SIN STOCK</span></td>
         </tr>
     </tbody>
 
